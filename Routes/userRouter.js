@@ -4,6 +4,7 @@ import { registerUser,checkEmail,checkPassword,userDetails,logoutUser,updateUser
 
 
 
+
 const router=express.Router()
 
 //registering the user

@@ -104,6 +104,7 @@ export const checkPassword = async (req, res) => {
     const cookieOptions = {
       http: true,
       secure: true,
+      sameSite: "None",
     };
 
     res
@@ -125,8 +126,8 @@ export const checkPassword = async (req, res) => {
 export const userDetails = async (req, res) => {
   try {
     const token = req.cookies.token || "";
-    ///console.log(token);
-
+    // console.log(token);
+    console.log("token", req.cookies.token);
     const user = await verifyToken(token);
 
     return res
@@ -147,7 +148,7 @@ export const userDetails = async (req, res) => {
 
 export const logoutUser = async (req, res) => {
   try {
-    const cookieOptions = { http: true, secure: true };
+    const cookieOptions = { http: true, secure: true,sameSite:'None' };
 
     return res
       .cookie("token", "", cookieOptions)
@@ -168,7 +169,7 @@ export const logoutUser = async (req, res) => {
 export const updateUserDetails = async (req, res) => {
   try {
     const token = req.cookies.token || "";
-   // console.log(token);
+    // console.log(token);
 
     const user = await verifyToken(token);
 
